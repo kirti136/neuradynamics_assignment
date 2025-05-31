@@ -1,5 +1,6 @@
-import ProductCard from './ProductCard'
-import { motion } from 'framer-motion'
+import PropTypes from "prop-types";
+import ProductCard from "./ProductCard";
+import { motion } from "framer-motion";
 
 function ProductGrid({ products, isLoading, isError }) {
   if (isLoading) {
@@ -14,7 +15,7 @@ function ProductGrid({ products, isLoading, isError }) {
           </div>
         ))}
       </div>
-    )
+    );
   }
 
   if (isError) {
@@ -26,13 +27,13 @@ function ProductGrid({ products, isLoading, isError }) {
           There was a problem loading the products. Please try again later.
         </p>
       </div>
-    )
+    );
   }
 
   if (products.length === 0) {
     return (
       <div className="text-center py-12">
-        <motion.div 
+        <motion.div
           initial={{ scale: 0 }}
           animate={{ scale: 1 }}
           transition={{ duration: 0.3 }}
@@ -45,7 +46,7 @@ function ProductGrid({ products, isLoading, isError }) {
           Try adjusting your search or filter criteria.
         </p>
       </div>
-    )
+    );
   }
 
   return (
@@ -54,7 +55,18 @@ function ProductGrid({ products, isLoading, isError }) {
         <ProductCard key={product.id} product={product} />
       ))}
     </div>
-  )
+  );
 }
 
-export default ProductGrid
+ProductGrid.propTypes = {
+  products: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
+      // You can extend this shape to include other fields in your product
+    })
+  ).isRequired,
+  isLoading: PropTypes.bool.isRequired,
+  isError: PropTypes.bool.isRequired,
+};
+
+export default ProductGrid;

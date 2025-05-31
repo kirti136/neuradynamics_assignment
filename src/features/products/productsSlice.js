@@ -17,7 +17,7 @@ const initialState = {
   items: [],
   selectedProduct: null,
   categories: [],
-  status: 'idle', // idle, loading, succeeded, failed
+  status: 'idle',
   error: null,
 }
 
@@ -55,7 +55,6 @@ const productsSlice = createSlice({
   },
 })
 
-// Selectors
 export const selectAllProducts = (state) => state.products.items
 export const selectProductById = (state) => state.products.selectedProduct
 export const selectCategories = (state) => state.products.categories

@@ -21,17 +21,14 @@ export default function useFilteredProducts() {
     if (status !== 'succeeded') return []
 
     return products
-      // Filter by search term
       .filter(product => 
         searchTerm === '' || 
         product.title.toLowerCase().includes(searchTerm.toLowerCase())
       )
-      // Filter by category
       .filter(product => 
         category === '' || 
         product.category === category
       )
-      // Sort by price
       .sort((a, b) => {
         if (sortBy === 'price_asc') {
           return a.price - b.price
@@ -39,7 +36,6 @@ export default function useFilteredProducts() {
         if (sortBy === 'price_desc') {
           return b.price - a.price
         }
-        // Default sorting (by id or any other default)
         return a.id - b.id
       })
   }, [products, searchTerm, category, sortBy, status])

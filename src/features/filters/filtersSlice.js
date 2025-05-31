@@ -3,7 +3,7 @@ import { createSlice } from '@reduxjs/toolkit'
 const initialState = {
   searchTerm: '',
   category: '',
-  sortBy: 'default', // default, price_asc, price_desc
+  sortBy: 'default',
 }
 
 const filtersSlice = createSlice({
@@ -27,7 +27,6 @@ const filtersSlice = createSlice({
   },
 })
 
-// Actions
 export const {
   setSearchTerm,
   setCategory,
@@ -35,7 +34,6 @@ export const {
   resetFilters,
 } = filtersSlice.actions
 
-// Selectors
 export const selectSearchTerm = (state) => state.filters.searchTerm
 export const selectCategory = (state) => state.filters.category
 export const selectSortBy = (state) => state.filters.sortBy
