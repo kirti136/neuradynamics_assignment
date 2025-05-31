@@ -73,22 +73,6 @@ function ProductDetail({ product }) {
             <h1 className="text-2xl font-bold text-white mb-2">
               {product.title}
             </h1>
-            <motion.button
-              whileTap={{ scale: 0.9 }}
-              onClick={handleToggleFavorite}
-              className={`p-2 rounded-full ${
-                isFavorite ? "bg-red-500/20" : "bg-gray-700"
-              }`}
-              aria-label={
-                isFavorite ? "Remove from favorites" : "Add to favorites"
-              }
-            >
-              {isFavorite ? (
-                <FaHeart className="text-red-500 text-xl" />
-              ) : (
-                <FaRegHeart className="text-white text-xl" />
-              )}
-            </motion.button>
           </div>
 
           <div className="mb-4">
@@ -113,22 +97,19 @@ function ProductDetail({ product }) {
           </p>
 
           <div className="flex space-x-4">
-            <button className="btn-primary flex-1">Add to Cart</button>
             <button
               onClick={handleToggleFavorite}
-              className={`btn-secondary flex items-center justify-center ${
-                isFavorite ? "bg-red-500/20 hover:bg-red-500/30" : ""
-              }`}
+              className={`btn-secondary flex items-center justify-center`}
             >
               {isFavorite ? (
                 <>
                   <FaHeart className="mr-2 text-red-500" />
-                  <span>Favorited</span>
+                  <h1>Added to Favourites</h1>
                 </>
               ) : (
                 <>
                   <FaRegHeart className="mr-2" />
-                  <span>Favorite</span>
+                  <h1>Add to Favourites</h1>
                 </>
               )}
             </button>
